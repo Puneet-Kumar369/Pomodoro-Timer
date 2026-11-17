@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Focus Space</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ================================= -->
+    <!-- HEADER -->
+    <!-- ================================= -->
+
+    <header class="header">
+
+        <h1 class="dotted">Focus Space</h1>
+
+        <p class="subtitle">
+            Focus on your goals. Take a break. Repeat.
+        </p>
+
+        <div class="top-buttons">
+
+            <button id="music" type="button">
+                🎵 Music
+            </button>
+
+            <button id="settings" type="button">
+                ⚙ Settings
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================================= -->
+    <!-- MAIN TIMER -->
+    <!-- ================================= -->
+
+    <main class="main-container">
+
+        <section class="modes">
+
+            <button id="pomodoro"
+                data-mode="pomodoro"
+                class="active"
+                type="button">
+                Focus
+            </button>
+
+            <button id="short-break"
+                data-mode="short-break"
+                type="button">
+                Short Break
+            </button>
+
+            <button id="long-break"
+                data-mode="long-break"
+                type="button">
+                Long Break
+            </button>
+
+        </section>
+
+
+        <!-- REPETITIONS -->
+
+        <section class="repetitions">
+
+            <p>Focus Sessions</p>
+
+            <div class="repetition-container">
+
+                <span class="rep">1</span>
+                <span class="rep">2</span>
+                <span class="rep">3</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- TIMER CIRCLE -->
+
+        <section id="timer-container" class="timer">
+
+            <div class="timer-content">
+
+                <p id="current-mode">
+                    Focus Time
+                </p>
+
+                <div class="time-display">
+
+                    <span id="minutes">25</span>
+                    <span>:</span>
+                    <span id="seconds">00</span>
+
+                </div>
+
+                <div class="progress-container">
+
+                    <div id="timer-progress"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TIMER CONTROLS -->
+
+        <section class="timer-controls">
+
+            <button id="start" type="button">
+                Start
+            </button>
+
+            <button id="reset" type="button">
+                Reset
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================= -->
+    <!-- MUSIC PANEL -->
+    <!-- ================================= -->
+
+    <section id="music-panel" class="panel">
+
+        <div class="panel-header">
+
+            <h2>Music Space</h2>
+
+            <button id="close-music" type="button">
+                ✕
+            </button>
+
+        </div>
+
+        <p>Choose your background music</p>
+
+        <select id="music-choice">
+
+            <option value="none">
+                Select Music
+            </option>
+
+            <option value="music1.mp3">
+                Relaxing Music
+            </option>
+
+            <option value="music2.mp3">
+                Nature Sounds
+            </option>
+
+            <option value="music3.mp3">
+                Piano Music
+            </option>
+
+        </select>
+
+
+        <!-- MUSIC CONTROLS -->
+
+        <div class="music-controls">
+
+            <button id="play-music" type="button">
+                ▶ Play
+            </button>
+
+            <button id="pause-music" type="button">
+                ⏸ Pause
+            </button>
+
+            <button id="stop-music" type="button">
+                ■ Stop
+            </button>
+
+        </div>
+
+
+        <!-- AUDIO PLAYER -->
+
+        <audio
+            id="background-music"
+            loop>
+        </audio>
+
+    </section>
+
+
+    <!-- ================================= -->
+    <!-- SETTINGS PANEL -->
+    <!-- ================================= -->
+
+    <section id="settings-panel" class="panel">
+
+        <div class="panel-header">
+
+            <h2>Settings</h2>
+
+            <button id="close-settings" type="button">
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- TIMER DURATIONS -->
+
+        <section class="setting-section">
+
+            <h3>Timer Durations</h3>
+
+            <label for="pomodoro-duration">
+                Focus Duration (minutes)
+            </label>
+
+            <input
+                type="number"
+                id="pomodoro-duration"
+                value="25"
+                min="1"
+                max="120">
+
+
+            <label for="short-break-duration">
+                Short Break (minutes)
+            </label>
+
+            <input
+                type="number"
+                id="short-break-duration"
+                value="5"
+                min="1"
+                max="60">
+
+
+            <label for="long-break-duration">
+                Long Break (minutes)
+            </label>
+
+            <input
+                type="number"
+                id="long-break-duration"
+                value="15"
+                min="1"
+                max="60">
+
+
+            <label for="focus-repetitions">
+                Focus Repetitions
+            </label>
+
+            <input
+                type="number"
+                id="focus-repetitions"
+                value="3"
+                min="1"
+                max="3">
+
+        </section>
+
+
+        <!-- BACKGROUND SETTINGS -->
+
+        <section class="setting-section">
+
+            <h3>Background Appearance</h3>
+
+            <label for="background-choice">
+                Choose Background
+            </label>
+
+            <select id="background-choice">
+
+                <option value="IMGA.jpg">
+                    Background A
+                </option>
+
+                <option value="IMAG.jpg">
+                    Background B
+                </option>
+
+            
+
+            </select>
+
+
+            <label for="background-dim">
+                Background Dimming:
+                <span id="dim-value">15%</span>
+            </label>
+
+            <input
+                type="range"
+                id="background-dim"
+                min="0"
+                max="80"
+                value="15">
+
+        </section>
+
+
+        <!-- VOLUME SETTINGS -->
+
+        <section class="setting-section">
+
+            <h3>Audio Settings</h3>
+
+            <label for="website-volume">
+                Website Volume:
+                <span id="volume-value">50%</span>
+            </label>
+
+            <input
+                type="range"
+                id="website-volume"
+                min="0"
+                max="100"
+                value="50">
+
+        </section>
+
+
+        <!-- NOTIFICATION SOUNDS -->
+
+        <section class="setting-section">
+
+            <h3>Notification Sound</h3>
+
+            <label for="timer-sound">
+                Choose a Sound
+            </label>
+
+            <select id="timer-sound">
+
+                <option value="chimes">Chimes</option>
+                <option value="xylophone">Xylophone</option>
+                <option value="chords">Chords</option>
+                <option value="jingle">Jingle</option>
+                <option value="transition">Transition</option>
+                <option value="descending">Descending</option>
+                <option value="bounce">Bounce</option>
+                <option value="echo">Echo</option>
+                <option value="ascending">Ascending</option>
+
+            </select>
+
+            <button id="test-sound" type="button">
+                Test Sound
+            </button>
+
+        </section>
+
+
+        <!-- SCREEN APPEARANCE -->
+
+        <section class="setting-section">
+
+            <h3>Screen Modes</h3>
+
+            <div class="screen-options">
+
+                <button id="view-screen" type="button">
+                    Normal
+                </button>
+
+                <button id="multicolour-screen" type="button">
+                    Multicolour
+                </button>
+
+                <button id="black-screen" type="button">
+                    Black
+                </button>
+
+                <button id="white-screen" type="button">
+                    White
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SAVE SETTINGS -->
+
+        <div class="settings-buttons">
+
+            <button id="save-settings" type="button">
+                Save Settings
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================= -->
+    <!-- BLANK SCREEN OVERLAY -->
+    <!-- ================================= -->
+
+    <section id="blank-screen">
+
+        <div class="blank-screen-content">
+
+            <h2 id="blank-screen-label">
+                Focus Space
+            </h2>
+
+            <div class="blank-screen-controls">
+
+                <button id="blank-view" type="button">
+                    Normal
+                </button>
+
+                <button id="blank-multicolour" type="button">
+                    Multicolour
+                </button>
+
+                <button id="blank-black" type="button">
+                    Black
+                </button>
+
+                <button id="blank-white" type="button">
+                    White
+                </button>
+
+            </div>
+
+            <p>
+                Press ESC to exit
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================= -->
+    <!-- BREAK NOTIFICATION -->
+    <!-- ================================= -->
+
+    <dialog id="break-notification">
+
+        <div class="notification-content">
+
+            <h2 id="notification-title">
+                Session Complete!
+            </h2>
+
+            <p id="notification-message">
+                Well done!
+            </p>
+
+            <button
+                id="notification-continue"
+                type="button">
+                Continue
+            </button>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- ================================= -->
+    <!-- FOOTER -->
+    <!-- ================================= -->
+
+    <footer class="footer">
+
+        <p>
+            Focus Space © 2026
+        </p>
+
+        <p>
+            Stay focused. Stay productive.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

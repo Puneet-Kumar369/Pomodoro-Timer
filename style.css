@@ -1,0 +1,708 @@
+
+/* =====================================
+   1. ROOT VARIABLES
+===================================== */
+
+:root {
+    --page-background: url("IMGA.jpg");
+    --background-dim: 0.15;
+
+    --main-colour: #82FFD5;
+    --secondary-colour: #5DCE8D;
+
+    --text-colour: #ffffff;
+    --button-text: #222222;
+
+    --panel-background: rgba(20, 30, 35, 0.88);
+    --border-colour: rgba(255, 255, 255, 0.35);
+}
+
+
+/* =====================================
+   2. GENERAL PAGE STYLING
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-colour);
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, var(--background-dim)),
+            rgba(0, 0, 0, var(--background-dim))
+        ),
+        var(--page-background);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =====================================
+   3. HEADER
+===================================== */
+
+.header {
+    width: 100%;
+    text-align: center;
+    padding: 30px 15px 15px;
+}
+
+.dotted {
+    display: inline-block;
+
+    font-size: 42px;
+    font-weight: 900;
+
+    background: linear-gradient(
+        90deg,
+        #ff4d6d,
+        #ffbe0b,
+        #80ed99,
+        #00bbf9,
+        #c77dff
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    border: 3px dotted blueviolet;
+    border-radius: 15px;
+
+    padding: 10px 20px;
+}
+
+.subtitle {
+    margin-top: 12px;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+
+/* =====================================
+   4. TOP BUTTONS
+===================================== */
+
+.top-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+/* =====================================
+   5. GENERAL BUTTONS
+===================================== */
+
+button {
+    border: none;
+    border-radius: 12px;
+
+    padding: 11px 20px;
+
+    background-color: var(--main-colour);
+    color: var(--button-text);
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--secondary-colour);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+
+/* =====================================
+   6. MAIN TIMER CONTAINER
+===================================== */
+
+.main-container {
+    width: 100%;
+    max-width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =====================================
+   7. TIMER MODES
+===================================== */
+
+.modes {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 20px auto;
+}
+
+.modes button {
+    padding: 12px 18px;
+    border-radius: 20px;
+}
+
+.modes button.active {
+    background-color: #ffffff;
+    color: #222222;
+
+    box-shadow:
+        0 0 12px rgba(130, 255, 213, 0.8);
+}
+
+
+/* =====================================
+   8. REPETITIONS
+===================================== */
+
+.repetitions {
+    text-align: center;
+    margin: 10px 0 20px;
+}
+
+.repetitions p {
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.repetition-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.rep {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid white;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    transition: 0.3s ease;
+}
+
+.rep.completed {
+    background-color: var(--secondary-colour);
+    color: #17251e;
+    border-color: var(--secondary-colour);
+}
+
+
+/* =====================================
+   9. TIMER CIRCLE
+===================================== */
+
+.timer {
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    border: 10px solid #5DCE8D;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        0 0 25px rgba(93, 206, 141, 0.45),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+
+    margin: 15px auto;
+}
+
+.timer-content {
+    width: 85%;
+    text-align: center;
+}
+
+#current-mode {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.time-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 65px;
+    font-weight: bold;
+
+    color: #ffbf00;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =====================================
+   10. TIMER PROGRESS
+===================================== */
+
+.progress-container {
+    width: 80%;
+    height: 7px;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    margin: 20px auto 0;
+}
+
+#timer-progress {
+    width: 0%;
+    height: 100%;
+
+    background: var(--main-colour);
+
+    border-radius: 10px;
+
+    transition: width 0.5s linear;
+}
+
+
+/* =====================================
+   11. TIMER CONTROLS
+===================================== */
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    margin: 25px auto;
+}
+
+.timer-controls button {
+    min-width: 110px;
+    font-size: 17px;
+}
+
+
+/* =====================================
+   12. PANELS
+===================================== */
+
+.panel {
+    display: none;
+
+    position: fixed;
+    z-index: 20;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(90%, 500px);
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    padding: 25px;
+
+    border: 1px solid var(--border-colour);
+    border-radius: 20px;
+
+    background: var(--panel-background);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.panel.open {
+    display: block;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    font-size: 25px;
+}
+
+.panel-header button {
+    padding: 8px 12px;
+}
+
+
+/* =====================================
+   13. MUSIC PANEL
+===================================== */
+
+#music-panel > p {
+    margin: 12px 0;
+    font-size: 15px;
+}
+
+#music-choice {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid var(--main-colour);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #222222;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.music-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+.music-controls button {
+    flex: 1 1 90px;
+}
+
+#background-music {
+    display: none;
+}
+
+
+/* =====================================
+   14. INPUTS AND SELECTS
+===================================== */
+
+input,
+select {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    margin: 8px 0 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #222222;
+
+    font-size: 14px;
+}
+
+input[type="range"] {
+    padding: 0;
+    accent-color: #82FFD5;
+    cursor: pointer;
+}
+
+
+/* =====================================
+   15. SETTINGS SECTIONS
+===================================== */
+
+.setting-section {
+    margin: 20px 0;
+
+    padding: 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.setting-section h3 {
+    margin-bottom: 15px;
+    color: var(--main-colour);
+    font-size: 18px;
+}
+
+.setting-section label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+/* =====================================
+   16. SCREEN MODE OPTIONS
+===================================== */
+
+.screen-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.screen-options button {
+    flex: 1 1 40%;
+}
+
+.settings-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#save-settings {
+    width: 100%;
+}
+
+
+/* =====================================
+   17. BLANK SCREEN
+===================================== */
+
+#blank-screen {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background: rgba(0, 0, 0, 0.95);
+}
+
+#blank-screen.active {
+    display: flex;
+}
+
+.blank-screen-content h2 {
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.blank-screen-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#blank-screen p {
+    margin-top: 25px;
+    opacity: 0.7;
+}
+
+#blank-screen.black {
+    background: #000000;
+    color: #ffffff;
+}
+
+#blank-screen.white {
+    background: #ffffff;
+    color: #222222;
+}
+
+#blank-screen.multicolour {
+    background: linear-gradient(
+        135deg,
+        #ff006e,
+        #8338ec,
+        #3a86ff,
+        #06d6a0,
+        #ffbe0b
+    );
+
+    color: #ffffff;
+}
+
+
+/* =====================================
+   18. BREAK NOTIFICATION
+===================================== */
+
+#break-notification {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(90%, 400px);
+
+    padding: 30px;
+
+    border: 2px solid var(--main-colour);
+    border-radius: 20px;
+
+    background: #17251e;
+    color: white;
+
+    text-align: center;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+#break-notification::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.notification-content h2 {
+    margin-bottom: 15px;
+    color: var(--main-colour);
+}
+
+.notification-content p {
+    margin-bottom: 25px;
+}
+
+
+/* =====================================
+   19. FOOTER
+===================================== */
+
+.footer {
+    width: 100%;
+
+    margin-top: auto;
+    padding: 20px;
+
+    text-align: center;
+
+    background: rgba(0, 0, 0, 0.3);
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =====================================
+   20. RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 600px) {
+
+    .dotted {
+        font-size: 30px;
+        padding: 9px 13px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .main-container {
+        padding: 10px;
+    }
+
+    .timer {
+        width: 270px;
+        height: 270px;
+    }
+
+    .time-display {
+        font-size: 55px;
+    }
+
+    .modes {
+        gap: 7px;
+    }
+
+    .modes button {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    .timer-controls {
+        gap: 12px;
+    }
+
+}
+
+
+/* =====================================
+   21. REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}
